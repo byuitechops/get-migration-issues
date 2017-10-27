@@ -1,0 +1,22 @@
+{
+  "name": "get-migration-issues",
+  "version": "1.0.0",
+  "description": "Retrieves migration issues after creating a new Canvas course, used by our conversion tool.",
+  "main": "getMigrationIssues.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byuitechops/get-migration-issues.git"
+  },
+  "author": "Daniel Green",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/byuitechops/get-migration-issues/issues"
+  },
+  "homepage": "https://github.com/byuitechops/get-migration-issues#readme",
+  "dependencies": {
+    "request": "^2.83.0"
+  }
+}

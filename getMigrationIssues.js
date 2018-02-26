@@ -1,9 +1,7 @@
-/*eslint-env node, es6*/
-/*eslint no-console:0*/
 'use-strict';
 
 const request = require('request'),
-  auth = require('../../auth.json');
+    auth = require('../../auth.json');
 
 /********************************************
  * uses the canvas API to GET all migration
@@ -11,19 +9,19 @@ const request = require('request'),
  ********************************************/
 module.exports = function (course, stepCallback) {
 
-  var url = "https://byui.instructure.com/api/v1/courses/" + course.info.canvasOU + "/content_migrations/" + course.info.migrationID + "/migration_issues";
+    var url = `https://${course.info.domain}.instructure.com/api/v1/courses/${course.info.canvasOU}/content_migrations/${course.info.migrationID}/migration_issues`;
 
-  request.get(url, function (err, response, body) {
-    if (err) {
-      course.fatalError(err);
-      stepCallback(err, course);
-      return;
-    }
-    body = JSON.parse(body);
-    course.newInfo('migrationIssues', body);
-    course.message('Migration issues successfully retrieved');
+    request.get(url, function (err, response, body) {
+        if (err) {
+            course.fatalError(err);
+            stepCallback(err, course);
+            return;
+        }
+        body = JSON.parse(body);
+        course.newInfo('migrationIssues', body);
+        course.message('Migration issues successfully retrieved');
 
-    stepCallback(null, course);
+        stepCallback(null, course);
 
-  }).auth(null, null, true, auth.token);
-}
+    }).auth(null, null, true, auth.token);
+};
